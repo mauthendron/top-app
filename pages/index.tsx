@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
 import { Button, Htag, P, Tag, Rating } from "../components";
+import { withLayout } from "../layout/Layout";
 
-export default function Home(): JSX.Element {
+function Home(): JSX.Element {
 	const [counter, setCounter] = useState<number>(0);
+	const [rating, setRating] = useState<number>(4);
 
 	useEffect(() => {
-		console.log('Counter' + counter);
+		console.log("Counter" + counter);
 	});
 
 	return (
@@ -16,7 +18,7 @@ export default function Home(): JSX.Element {
 				arrow="right"
 				onClick={() => setCounter((x) => x + 1)}
 			>
-				Кнопка
+				Кнопка + 1
 			</Button>
 			<Button appearence="ghost" arrow="down">
 				Кнопка
@@ -36,7 +38,9 @@ export default function Home(): JSX.Element {
 			<Tag size="s" color="primary">
 				Primary
 			</Tag>
-			<Rating rating={4} isEditable></Rating>
+			<Rating rating={rating} isEditable setRating={setRating}></Rating>
 		</>
 	);
 }
+
+export default withLayout(Home);

@@ -1,8 +1,9 @@
+import { useEffect, useState, KeyboardEvent } from "react";
 import { RatingProps } from "./Rating.props";
 import styles from "./Rating.module.css";
 import cn from "classnames";
 import StarIcon from "./star.svg";
-import { useEffect, useState, KeyboardEvent } from "react";
+
 
 export const Rating = ({
 		isEditable = false,
@@ -21,6 +22,7 @@ export const Rating = ({
 	const constructRating = (currentRating: number) => {
 		const updateArray = ratingArray.map((r: JSX.Element, i: number) => {
 			return (
+				// eslint-disable-next-line react/jsx-key
 				<span
 					className={cn(styles.star, {
 						[styles.filled]: i < currentRating,
@@ -56,7 +58,7 @@ export const Rating = ({
 		setRating(i);
 	};
 
-	const handleSpace = (i: number, e: KeyboardEvent<SVGAElement>) => {
+	const handleSpace = (i: number, e: KeyboardEvent<SVGElement>) => {
 		if (e.code != "Space" || !setRating) {
 			return;
 		}

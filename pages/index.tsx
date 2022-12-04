@@ -10,12 +10,12 @@ function Home({menu}: HomeProps): JSX.Element {
 
 	return (
 		<>
-			<Htag tag="h1">Заголовок</Htag>
+			<Htag tag="h1">Узнать подробнее</Htag>
 			<Button
 				appearence="primary"
 				arrow="right"
 			>
-				Кнопка + 1
+				Отправить
 			</Button>
 			<Button appearence="ghost" arrow="down">
 				Кнопка

@@ -16,7 +16,7 @@
 
 .price, .priceTitle {
 	grid-column: pricestart / priceend;
-
+	white-space: nowrap;
 }
 
 .credit, .creditTitle {
@@ -25,13 +25,14 @@
 
 .rating, .rateTitle {
 	grid-column: ratestart / end;
+	white-space: nowrap;
 }
 
 .hr, .description, .actions {
 	grid-column: start / end;
 }
 
-.features {
+.feature {
 	grid-column: start / middle;
 }
 
@@ -51,7 +52,7 @@
 }
 
 .category {
-	margin-top: 5px;
+	margin-top: 7px;
 }
 
 .price, .credit {
@@ -65,7 +66,7 @@
 	line-height: 19px;
 }
 
-.oldPrice{
+.oldPrice {
 	margin-left: 5px;
 }
 
@@ -80,8 +81,8 @@
 }
 
 .priceTitle,
-.rateTitle,
-.creditTitle {
+.creditTitle,
+.rateTitle {
 	font-weight: 300;
 	font-size: 14px;
 	line-height: 19px;
@@ -93,7 +94,7 @@
 
 .advBlock {
 	font-size: 16px;
-	line-height: 25px;
+	line-height: 22px;
 }
 
 .advTitle {
@@ -115,15 +116,15 @@
 .characteristics {
 	display: grid;
 	grid-template-columns: auto 1fr auto;
-	padding-right:60px;
+	padding-right: 60px;
+	align-items: baseline;
 	gap: 10px;
+
 	font-size: 16px;
 	line-height: 32px;
-	align-items: baseline;
 }
 
 .characteristicsName {
-	margin-right: 10px;
 	font-weight: bold;
 }
 

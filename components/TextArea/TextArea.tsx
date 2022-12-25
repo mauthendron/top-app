@@ -4,8 +4,13 @@ import cn from 'classnames';
 import { ForwardedRef, forwardRef } from "react";
 
 // eslint-disable-next-line react/display-name
-export const Textarea = forwardRef(({className, ...props}: TextareaProps, ref: ForwardedRef<HTMLTextAreaElement>): JSX.Element => {
+export const Textarea = forwardRef(({className, error, ...props}: TextareaProps, ref: ForwardedRef<HTMLTextAreaElement>): JSX.Element => {
 	return (
-		<textarea className={cn(className, styles.textarea)} ref={ref} {...props}/>
+		<div className={cn(styles.textareaWrapper, className)}>
+			<textarea className={cn(styles.textarea, {
+				[styles.error]: error
+			})} ref={ref} {...props}/>
+			{error && <span className={styles.errorMessage}>{error.message}</span>}
+		</div>
 	);
 });

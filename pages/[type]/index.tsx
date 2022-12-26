@@ -3,6 +3,7 @@ import { withLayout } from "../../layout/Layout";
 import axios from "axios";
 import { MenuItem } from "../../interfaces/menu.interface";
 import { firstLevelMenu } from "../../helpers/helpers";
+import { API } from "../../helpers/api";
 
 function Type(): JSX.Element {
 	return (
@@ -24,7 +25,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps<HomeProps> = async () => {
 	const firstCategory = 0;
 	const { data: menu } = await axios.post<MenuItem[]>(
-		process.env.NEXT_PUBLIC_DOMAIN + "/api/top-page/find", {
+		API.topPage.find, {
 			firstCategory
 	});
 	return {

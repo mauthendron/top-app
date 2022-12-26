@@ -37,7 +37,7 @@ export const Search = ({className, ...props}: SearchProps): JSX.Element => {
 				onKeyDown={handleKeyDown}
 			/>
 			<Button
-				appearence='primary'
+				appearance='primary'
 				className={styles.button}
 				onClick={goToSearch}
 			>

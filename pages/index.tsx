@@ -4,7 +4,8 @@ import { Button, Htag, P, Tag, Rating, Input } from "../components";
 import { withLayout } from "../layout/Layout";
 import axios from "axios";
 import { MenuItem } from "../interfaces/menu.interface";
-import { TextArea } from "../components/Textarea/Textarea";
+import { Textarea } from "../components/Textarea/Textarea";
+import { API } from "../helpers/api";
 
 function Home({ menu }: HomeProps): JSX.Element {
 	const [rating, setRating] = useState<number>(4);
@@ -35,7 +36,7 @@ function Home({ menu }: HomeProps): JSX.Element {
 			</Tag>
 			<Rating rating={rating} isEditable setRating={setRating}></Rating>
 			<Input placeholder="test" />
-			<TextArea placeholder="text" />
+			<Textarea placeholder="text" />
 		</>
 	);
 }
@@ -45,7 +46,7 @@ export default withLayout(Home);
 export const getStaticProps: GetStaticProps<HomeProps> = async () => {
 	const firstCategory = 0;
 	const { data: menu } = await axios.post<MenuItem[]>(
-		process.env.NEXT_PUBLIC_DOMAIN + "/api/top-page/find",
+		API.topPage.find,
 		{
 			firstCategory,
 		}

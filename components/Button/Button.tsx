@@ -9,7 +9,8 @@ export const Button = ({ appearance, arrow = 'none', children, className, ...pro
 	const scale = useMotionValue(1);
 
 	useEffect(() => {
-		scale
+		scale;
+		// eslint-disable-next-line
 	}, []);
 
 	return (
@@ -19,7 +20,6 @@ export const Button = ({ appearance, arrow = 'none', children, className, ...pro
 				[styles.primary]: appearance == 'primary',
 				[styles.ghost]: appearance == 'ghost',
 			})}
-			style={scale}
 			{...props}
 		>
 			{children}

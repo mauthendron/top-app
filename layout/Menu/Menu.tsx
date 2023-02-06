@@ -46,9 +46,9 @@ export const Menu = (): JSX.Element => {
 
 	const buildFirstLevel = () => {
 		return (
-			<>
+			<ul>
 				{firstLevelMenu.map(m => (
-					<div key={m.route}>
+					<li key={m.route}>
 						<Link href={`/${m.route}`}>
 								<div className={cn(styles.firstLevel, {
 									[styles.firstLevelActive]: m.id == firstCategory
@@ -58,9 +58,9 @@ export const Menu = (): JSX.Element => {
 								</div>
 						</Link>
 						{m.id == firstCategory && buildSecondLevel(m)}
-					</div>
+					</li>
 				))}
-			</>
+			</ul>
 		);
 	};
 
@@ -115,8 +115,8 @@ export const Menu = (): JSX.Element => {
 	};
 
 	return (
-		<div className={styles.menu}>
+		<nav className={styles.menu}>
 			{buildFirstLevel()}
-		</div>
+		</nav>
 	);
 };

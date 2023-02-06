@@ -18,7 +18,7 @@ export const ReviewForm = ({
 	className,
 	...props
 }: ReviewFormProps): JSX.Element => {
-	const { register, control, handleSubmit, formState: {errors}, reset } = useForm<IReviewForm>();
+	const { register, control, handleSubmit, formState: {errors}, reset, clearErrors } = useForm<IReviewForm>();
 	const [isSuccess, setIsSuccess] = useState<boolean>(false);
 	const [error, setError] = useState<string>();
 
@@ -44,6 +44,7 @@ export const ReviewForm = ({
 					placeholder="Имя" 
 					error={errors.name}
 					tabIndex={isOpened ? 0 : -1}
+					aria-invalid={errors.name ? true : false}
 				/>
 				<Input
 					{...register("title", {required: {value: true, message: 'Заполните заголовок'}})} 
@@ -51,6 +52,7 @@ export const ReviewForm = ({
 					className={styles.title}
 					error={errors.title}
 					tabIndex={isOpened ? 0 : -1}
+					aria-invalid={errors.title ? true : false}
 				/>
 				<div className={styles.rating}>
 					<span>Оценка:</span>
@@ -76,23 +78,37 @@ export const ReviewForm = ({
 					className={styles.description}
 					error={errors.description}
 					tabIndex={isOpened ? 0 : -1}
+					aria-label='Текст отзыва'
+					aria-invalid={errors.description ? true : false}
 				/>
 				<div className={styles.submit}>
-					<Button appearance="primary" tabIndex={isOpened ? 0 : -1}>Отправить</Button>
+					<Button appearance="primary" tabIndex={isOpened ? 0 : -1} onClick={() => clearErrors}>Отправить</Button>
 					<span className={styles.info}>
 						* Перед публикацией отзыв пройдет предварительную
 						модерацию и проверку
 					</span>
 				</div>
 			</div>
-			{isSuccess && <div className={styles.success}>
+			{isSuccess && <div className={styles.success} role='alert'>
 				<div className={styles.successTitle}>Ваш отзыв отправлен</div>
 				<div>Спасибо, ваш отзыв будет опубликован после проверки.</div>
-				<CloseIcon className={styles.close} onClick={() => setIsSuccess(false)} />
+				<button 
+					className={styles.close}
+					onClick={() => setIsSuccess(false)} 
+					aria-label='закрыть оповещение'
+				>
+					<CloseIcon/>
+				</button>
 			</div>}
-			{error && <div className={styles.error}>
+			{error && <div className={styles.error} role='alert'>
 				Что-то пошло не так, попробуйте обновить страницу
-				<CloseIcon className={styles.close} onClick={() => setError(undefined)}/>
+				<button 
+					className={styles.close}
+					onClick={() => setError(undefined)}
+					aria-label='закрыть оповещение'
+				>
+					<CloseIcon />
+				</button>	
 			</div>}
 		</form>
 	);

@@ -4,13 +4,13 @@ import CloseIcon from "./close.svg";
 import cn from "classnames";
 import { Input } from "../Input/Input";
 import { Rating } from "../Rating/Rating";
-import { Textarea } from "../Textarea/Textarea";
 import { Button } from "../Button/Button";
 import { useForm, Controller } from "react-hook-form";
 import { IReviewForm, IReviewSentResponse } from "./ReviewForm.interface";
 import axios from "axios";
 import { API } from "../../helpers/api";
 import { useState } from "react";
+import { Textarea } from "../Textarea/Textarea";
 
 export const ReviewForm = ({
 	productId,

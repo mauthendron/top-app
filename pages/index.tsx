@@ -10,6 +10,7 @@ import { API } from "../helpers/api";
 function Home(): JSX.Element {
 	const [rating, setRating] = useState<number>(4);
 
+
 	return (
 		<>
 			<Htag tag="h1">Заголовок</Htag>
